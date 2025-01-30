@@ -11,6 +11,7 @@ import com.report.jasper_report_generator.model.Report;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -18,10 +19,15 @@ public class JasperReportService {
 
     public byte[] generateReport(String reportTemplateLocation) throws JRException {
         JasperReport jasperReport = loadReportTemplate(reportTemplateLocation);
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(getHardcodedData());
+        List<Report> reportData = new ArrayList<>();    
+        reportData.add(new Report(1, "ANTONIA", "GRL" + String.format("%03d", 1), "Description ", new String[]{"*-All", "M", "NM"}[new java.util.Random().nextInt(3)], new String[]{"Y", "N"}[new java.util.Random().nextInt(2)], new String[]{"Y", "N"}[new java.util.Random().nextInt(2)], new String[]{"Inactive", "Active"}[new java.util.Random().nextInt(2)],1000000.0, 2000000.0, 3000000.0, 4000000.0, 30, 50, 60, 70, 80, 90, 1.0));
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(reportData);
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("reportDataSource1", dataSource);
-        parameters.put("reportDataSource2", dataSource);
+        parameters.put("REPORT_DATASET_1", new JRBeanCollectionDataSource(getStaticData()));
+        parameters.put("REPORT_DATASET_2", new JRBeanCollectionDataSource(getStaticData()));
+        parameters.put("REPORT_DATASET_3", new JRBeanCollectionDataSource(getCASRNBID0131SecondPageData()));
+        parameters.put("CREATED_BY", "Umar");
+        parameters.put("FORMATTED_CURRENT_DATE", new SimpleDateFormat("dd MMM yyyy").format(new Date()));
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
         return exportReportToPdf(jasperPrint);
     }
@@ -46,28 +52,60 @@ public class JasperReportService {
         }
     }
 
-    private List<Report> getHardcodedData() {
+    private List<Report> getStaticData() {
         List<Report> reportData = new ArrayList<>();
-        for (int i = 0; i <= 30; i++) {
+        String[] names = {"Alice", "Bob", "Charlie", "David", "Emma"};;
+        for (int i = 0; i <= 29; i++) {
             Report report = new Report(
-                i,  // No: dynamically changing with each iteration
-                "GRL" + String.format("%03d", i),  // Group ID: dynamically changing with each iterationa
-                "Description " + i,  // Description: dynamically changing with each iteration
-                new String[]{"*-All", "M", "NM"}[new java.util.Random().nextInt(3)],  // Medical Indicator: dynamically changing with each iteration
-                new String[]{"Y", "N"}[new java.util.Random().nextInt(2)],  // Decline Authority: dynamically changing with each iteration
-                new String[]{"Y", "N"}[new java.util.Random().nextInt(2)],  // Regional Referral: dynamically changing with each iteration
-                new String[]{"Inactive", "Active"}[new java.util.Random().nextInt(2)],  // Status: dynamically changing with each iteration
-                1000000.0 * i,  // maxLifeRisk: dynamically changing with each iteration
-                2000000.0 * i,  // maxAddbRisk: dynamically changing with each iteration
-                3000000.0 * i,  // maxCiRisk: dynamically changing with each iteration
-                4000000.0 * i,  // maxTpdRisk: dynamically changing with each iteration
-                30 * i,  // faceRatingBase: dynamically changing with each iteration
-                50 * i,  // faceRatingAddb: dynamically changing with each iteration
-                60 * i,  // faceRatingCi: dynamically changing with each iteration
-                70 * i,  // faceRatingTpd: dynamically changing with each iteration
-                80 * i,  // faceRatingWpPb: dynamically changing with each iteration
-                90 * i,  // faceRatingHospital: dynamically changing with each iteration
-                1.0 * i  // extraRateBase: dynamically changing with each iteration
+                i+1, 
+                names[new java.util.Random().nextInt(names.length)],  
+                "GRL" + String.format("%03d", i),  
+                "Description " + i,  
+                new String[]{"*-All", "M", "NM"}[new java.util.Random().nextInt(3)],  
+                new String[]{"Y", "N"}[new java.util.Random().nextInt(2)], 
+                new String[]{"Y", "N"}[new java.util.Random().nextInt(2)], 
+                new String[]{"Inactive", "Active"}[new java.util.Random().nextInt(2)], 
+                1000000.0 * i,
+                2000000.0 * i, 
+                3000000.0 * i, 
+                4000000.0 * i, 
+                30 * i, 
+                50 * i, 
+                60 * i, 
+                70 * i,
+                80 * i, 
+                90 * i, 
+                1.0 * i 
+            );        
+            reportData.add(report);
+        }
+        return reportData;
+    }
+
+    private List<Report> getCASRNBID0131SecondPageData() {
+        List<Report> reportData = new ArrayList<>();
+        String[] names = {"Alice", "Bob", "Charlie", "David", "Emma"};;
+        for (int i = 0; i <= 64; i++) {
+            Report report = new Report(
+                i+1, 
+                names[new java.util.Random().nextInt(names.length)],  
+                "GRL" + String.format("%03d", i),  
+                "Description " + i,  
+                new String[]{"*-All", "M", "NM"}[new java.util.Random().nextInt(3)],  
+                new String[]{"Y", "N"}[new java.util.Random().nextInt(2)], 
+                new String[]{"Y", "N"}[new java.util.Random().nextInt(2)], 
+                new String[]{"Inactive", "Active"}[new java.util.Random().nextInt(2)], 
+                1000000.0 * i,
+                2000000.0 * i, 
+                3000000.0 * i, 
+                4000000.0 * i, 
+                30 * i, 
+                50 * i, 
+                60 * i, 
+                70 * i,
+                80 * i, 
+                90 * i, 
+                1.0 * i 
             );        
             reportData.add(report);
         }

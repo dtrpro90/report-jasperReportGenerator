@@ -7,6 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Report {
     private int no;
+    private String userId;
     private String groupId;
     private String groupDescription;
     private String medInd;

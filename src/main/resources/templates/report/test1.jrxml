@@ -64,8 +64,23 @@
 		<field name="faceRatingHospital" class="java.lang.Integer"/>
 		<field name="extraRateBase" class="java.lang.Double"/>
 	</subDataset>
-	<parameter name="reportDataSource1" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
-	<parameter name="reportDataSource2" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<subDataset name="Dataset3" uuid="1916c530-2074-4443-8cb0-6bdb418c731a">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="userId" class="java.lang.String"/>
+		<field name="groupDescription" class="java.lang.String"/>
+		<field name="medInd" class="java.lang.String"/>
+		<field name="groupId" class="java.lang.String"/>
+		<field name="status" class="java.lang.String"/>
+		<field name="declineAuthority" class="java.lang.String"/>
+		<field name="referToRegional" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="REPORT_DATASET_1" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="REPORT_DATASET_2" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="REPORT_DATASET_3" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="CREATED_BY" class="java.lang.String"/>
+	<parameter name="FORMATTED_CURRENT_DATE" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -75,7 +90,7 @@
 	<title>
 		<band height="48" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="10" width="520" height="38" uuid="0093a812-10c4-40fc-b368-ea806ce89d91"/>
+				<reportElement x="0" y="10" width="520" height="38" isPrintInFirstWholeBand="true" uuid="0093a812-10c4-40fc-b368-ea806ce89d91"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="true"/>
 				</textElement>
@@ -88,17 +103,17 @@ Report Underwriting Risk Limit]]></text>
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<detail>
-		<band height="55" splitType="Stretch">
+		<band height="73" splitType="Stretch">
 			<componentElement>
-				<reportElement x="0" y="10" width="560" height="40" uuid="04191d3d-bae2-45db-835b-0c2596b226f0">
+				<reportElement isPrintRepeatedValues="false" x="0" y="10" width="560" height="40" isPrintInFirstWholeBand="true" uuid="04191d3d-bae2-45db-835b-0c2596b226f0">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="Blank">
 					<datasetRun subDataset="Dataset1" uuid="981f09a0-2ac0-489e-804c-0075b03ccdb7">
-						<dataSourceExpression><![CDATA[$P{reportDataSource1}]]></dataSourceExpression>
+						<dataSourceExpression><![CDATA[$P{REPORT_DATASET_1}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="15" uuid="3213eacc-a59a-4cf0-9652-d5650bcee0cc">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
@@ -117,7 +132,9 @@ Report Underwriting Risk Limit]]></text>
 							<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<textField>
-								<reportElement x="0" y="0" width="15" height="7" uuid="7ee3d894-4a99-4d50-9f7a-817c1b192399"/>
+								<reportElement x="0" y="0" width="15" height="7" uuid="7ee3d894-4a99-4d50-9f7a-817c1b192399">
+									<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								</reportElement>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
@@ -353,24 +370,24 @@ TPD Risk (IDR)]]></text>
 				</jr:table>
 			</componentElement>
 			<staticText>
-				<reportElement x="0" y="0" width="572" height="9" uuid="d2c5b5a1-1682-4e6a-8d50-db10f6f28401"/>
+				<reportElement isPrintRepeatedValues="false" x="0" y="0" width="572" height="9" uuid="d2c5b5a1-1682-4e6a-8d50-db10f6f28401"/>
 				<textElement textAlignment="Left">
 					<font size="6"/>
 				</textElement>
 				<text><![CDATA[Underwritting Risk Group Limit]]></text>
 			</staticText>
 		</band>
-		<band height="87">
+		<band height="113">
 			<componentElement>
-				<reportElement x="0" y="10" width="572" height="60" isRemoveLineWhenBlank="true" uuid="f1bf1fd3-f0ca-4b0f-8cf1-9101dcfdfc1e">
+				<reportElement isPrintRepeatedValues="false" x="0" y="10" width="572" height="60" isPrintInFirstWholeBand="true" uuid="f1bf1fd3-f0ca-4b0f-8cf1-9101dcfdfc1e">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="Blank">
 					<datasetRun subDataset="Dataset2" uuid="66edfc13-70ea-4db6-8400-636939942766">
-						<dataSourceExpression><![CDATA[$P{reportDataSource2}]]></dataSourceExpression>
+						<dataSourceExpression><![CDATA[$P{REPORT_DATASET_2}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="15" uuid="08d14546-837b-4f07-9ca7-12f8c6d39bc2">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
@@ -390,7 +407,7 @@ TPD Risk (IDR)]]></text>
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
 							<textField>
 								<reportElement x="0" y="0" width="15" height="7" uuid="2d22c14b-4ef1-4e1d-b3c1-fb597a2605c3"/>
-								<textElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{no}]]></textFieldExpression>
@@ -411,7 +428,7 @@ TPD Risk (IDR)]]></text>
 						<jr:detailCell style="Table_TD" height="7">
 							<textField>
 								<reportElement x="0" y="0" width="30" height="7" uuid="7ced328f-9f86-4dd1-94c6-3fd1acb4ce21"/>
-								<textElement>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{groupId}]]></textFieldExpression>
@@ -419,7 +436,7 @@ TPD Risk (IDR)]]></text>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="97" uuid="ec263aee-c6f4-41a4-af62-fcc60c61a2e6">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
 						<jr:columnHeader style="Table_CH" height="16" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -433,7 +450,7 @@ TPD Risk (IDR)]]></text>
 						<jr:detailCell style="Table_TD" height="7">
 							<textField>
 								<reportElement x="0" y="0" width="97" height="7" uuid="4942f6a1-6a20-4dfd-a5c6-da2792a6456a"/>
-								<textElement>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{groupDescription}]]></textFieldExpression>
@@ -441,7 +458,7 @@ TPD Risk (IDR)]]></text>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="38" uuid="67a5fd6a-b509-4e7f-9f08-a34faaa0422d">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
 						<jr:columnHeader style="Table_CH" height="16" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
 							<staticText>
@@ -455,7 +472,7 @@ TPD Risk (IDR)]]></text>
 						<jr:detailCell style="Table_TD" height="7">
 							<textField>
 								<reportElement x="0" y="0" width="38" height="7" uuid="4f463ec4-7b60-4f0e-b8a4-c539cd24ea27"/>
-								<textElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{medInd}]]></textFieldExpression>
@@ -463,7 +480,7 @@ TPD Risk (IDR)]]></text>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="40" uuid="0452a6f4-bd51-4445-99bb-483d183021d9">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
 						<jr:columnHeader style="Table_CH" height="16" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="40" height="16" uuid="f9543bbb-b0d6-4cb2-b4c2-fd751ed3faee"/>
@@ -476,7 +493,7 @@ TPD Risk (IDR)]]></text>
 						<jr:detailCell style="Table_TD" height="7">
 							<textField>
 								<reportElement x="0" y="0" width="40" height="7" uuid="990403bd-ce1d-487a-8195-b4aeb90773eb"/>
-								<textElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{declineAuthority}]]></textFieldExpression>
@@ -484,7 +501,7 @@ TPD Risk (IDR)]]></text>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="37" uuid="d93fd36d-4656-4700-8c73-0019029f92c0">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<jr:columnHeader style="Table_CH" height="16" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -499,7 +516,7 @@ TPD Risk (IDR)]]></text>
 						<jr:detailCell style="Table_TD" height="7">
 							<textField>
 								<reportElement x="0" y="0" width="37" height="7" uuid="d0310225-b654-4e7d-9c87-413343e603a8"/>
-								<textElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{referToRegional}]]></textFieldExpression>
@@ -507,7 +524,7 @@ TPD Risk (IDR)]]></text>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="35" uuid="7955093d-aa80-4758-b1e5-6f26dc09f9fa">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
 						<property name="com.jaspersoft.studio.unit.width" value="px"/>
 						<jr:columnHeader style="Table_CH" height="16" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -522,7 +539,7 @@ TPD Risk (IDR)]]></text>
 						<jr:detailCell style="Table_TD" height="7">
 							<textField>
 								<reportElement x="0" y="0" width="35" height="7" uuid="333f71ab-e4ed-4d92-8c23-40716198a32c"/>
-								<textElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
@@ -546,7 +563,7 @@ Base (%)]]></text>
 						<jr:detailCell style="Table_TD" height="7">
 							<textField>
 								<reportElement x="0" y="0" width="40" height="7" uuid="ddb67fb7-37d5-4dc5-894d-e40fa9794f8d"/>
-								<textElement>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{faceRatingBase}]]></textFieldExpression>
@@ -569,7 +586,7 @@ ADDB (%)]]></text>
 						<jr:detailCell style="Table_TD" height="7">
 							<textField>
 								<reportElement x="0" y="0" width="40" height="7" uuid="bab10027-cd35-499c-bf55-5ff165903eeb"/>
-								<textElement>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{faceRatingAddb}]]></textFieldExpression>
@@ -591,7 +608,7 @@ CI (%)]]></text>
 						<jr:detailCell style="Table_TD" height="7">
 							<textField>
 								<reportElement x="0" y="0" width="40" height="7" uuid="b098e29e-255f-4dcd-ada5-f76b3fee1cf6"/>
-								<textElement>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{faceRatingCi}]]></textFieldExpression>
@@ -613,7 +630,7 @@ TPD (%)]]></text>
 						<jr:detailCell style="Table_TD" height="7">
 							<textField>
 								<reportElement x="0" y="0" width="40" height="7" uuid="da8086f4-db46-4126-a2ed-dd6ad6d9d12b"/>
-								<textElement>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{faceRatingTpd}]]></textFieldExpression>
@@ -637,7 +654,7 @@ WP_PB (%)]]></text>
 						<jr:detailCell style="Table_TD" height="7">
 							<textField>
 								<reportElement x="0" y="0" width="40" height="7" uuid="db3bc779-8d13-4b38-b601-e780ab42500d"/>
-								<textElement>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{faceRatingWpPb}]]></textFieldExpression>
@@ -661,7 +678,7 @@ Hospital (%)]]></text>
 						<jr:detailCell style="Table_TD" height="7">
 							<textField>
 								<reportElement x="0" y="0" width="40" height="7" uuid="098d98d1-d10d-4e92-b445-356d62f2e703"/>
-								<textElement>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{faceRatingHospital}]]></textFieldExpression>
@@ -685,7 +702,7 @@ Base (%)]]></text>
 						<jr:detailCell style="Table_TD" height="7">
 							<textField>
 								<reportElement x="0" y="0" width="40" height="7" uuid="36f347da-033d-476d-819d-37351cfb4539"/>
-								<textElement>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
 									<font size="5"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{extraRateBase}]]></textFieldExpression>
@@ -694,33 +711,223 @@ Base (%)]]></text>
 					</jr:column>
 				</jr:table>
 			</componentElement>
+			<break>
+				<reportElement x="0" y="66" width="580" height="1" uuid="0c4dec11-ae64-41fb-b8dd-f7edf3ac8625"/>
+			</break>
+		</band>
+		<band height="174">
+			<componentElement>
+				<reportElement isPrintRepeatedValues="false" x="0" y="57" width="500" height="113" isPrintInFirstWholeBand="true" uuid="4248e58b-cf32-46d6-b812-8d7f74384556">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="Blank">
+					<datasetRun subDataset="Dataset3" uuid="b30f74f3-34db-4e80-aed0-f175411f4329">
+						<dataSourceExpression><![CDATA[$P{REPORT_DATASET_3}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="39" uuid="ee1a8944-6ec0-4b47-b44f-c308f97e232e">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table_CH" height="16" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="39" height="16" uuid="2fd1a25e-55db-42dd-9017-934dccd45d85"/>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font size="6"/>
+								</textElement>
+								<text><![CDATA[User Id]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="7">
+							<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<textField>
+								<reportElement x="0" y="0" width="39" height="7" uuid="0c9f3b5d-b4d1-48c8-95c4-e3e90f2fcfe5"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{userId}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="97" uuid="8daad7c2-a3cf-415f-8e7c-0306d8c7fc32">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table_CH" height="16" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="97" height="16" uuid="648f0ec1-7a1a-436f-ad0e-497dc31d3f21"/>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font size="6"/>
+								</textElement>
+								<text><![CDATA[Group Description]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="7">
+							<textField>
+								<reportElement x="0" y="0" width="97" height="7" uuid="7b46c67b-c10c-44d5-847c-af485c783ecc"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{groupDescription}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="39" uuid="07dd0cbb-9f8a-45fd-98d1-38f8c51eb2a3">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table_CH" height="16" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="39" height="16" uuid="b5b304b5-1f69-4a6a-87de-44bb45298589"/>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font size="6"/>
+								</textElement>
+								<text><![CDATA[Med Ind]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="7">
+							<textField>
+								<reportElement x="0" y="0" width="39" height="7" uuid="151c1754-695c-4150-96d8-734fba5f8adc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{medInd}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="a84fec34-1445-476e-8886-6a75f74b4f18">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:columnHeader style="Table_CH" height="16" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="16" uuid="1bdc45f0-1718-4875-b76a-82517b6853b4"/>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font size="6"/>
+								</textElement>
+								<text><![CDATA[Group Id]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="7">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="7" uuid="36ec1d77-63c8-407d-8558-e93f1eb8e0f1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{groupId}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="35" uuid="9a121173-1665-4d19-9375-d6aebb963176">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="16" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="35" height="16" uuid="db5b73a4-e084-4758-893f-c742ab685876"/>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font size="6"/>
+								</textElement>
+								<text><![CDATA[Status]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="7">
+							<textField>
+								<reportElement x="0" y="0" width="35" height="7" uuid="74090e5f-90ae-485f-aa0e-ce437375f72a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="40" uuid="df798349-63aa-47c3-a1b6-a96da246de3c">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+						<jr:columnHeader style="Table_CH" height="16" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="40" height="16" uuid="72f2eba3-62e8-4701-bbb5-be144ec85fbe"/>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font size="6"/>
+								</textElement>
+								<text><![CDATA[Decline Authority]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="7">
+							<textField>
+								<reportElement x="0" y="0" width="40" height="7" uuid="b7c3cacb-cf13-4542-ba97-f27a76c479b7"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{declineAuthority}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="37" uuid="c4ef2454-67e7-41e2-8d0d-3cbdba76986c">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<jr:columnHeader style="Table_CH" height="16" rowSpan="1">
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<staticText>
+								<reportElement x="0" y="0" width="37" height="16" uuid="9ab8c63c-332a-4636-81c3-a4ce3a6b73b5"/>
+								<textElement textAlignment="Center" verticalAlignment="Top">
+									<font size="6"/>
+								</textElement>
+								<text><![CDATA[Refer to Regional]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="7">
+							<textField>
+								<reportElement x="0" y="0" width="37" height="7" uuid="e7d10f9f-dd69-4ceb-91a2-ad797a425357"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="5"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{referToRegional}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement isPrintRepeatedValues="false" x="0" y="50" width="572" height="9" uuid="87722fc5-2035-4a70-a630-f50292d71bb2"/>
+				<textElement textAlignment="Left">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Underwritting Users & Refer to Regional Authority]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="10" width="520" height="38" isPrintInFirstWholeBand="true" uuid="bc27c742-2265-40fe-b986-c3f76ffad2d4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Client Administration System
+Report Underwriting Risk Limit]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="50" splitType="Stretch">
+		<band height="120" splitType="Stretch">
 			<staticText>
-				<reportElement x="20" y="0" width="80" height="10" uuid="86b44097-4eae-4b93-a5c9-bfab1c2d0a5d"/>
+				<reportElement x="0" y="0" width="80" height="10" uuid="86b44097-4eae-4b93-a5c9-bfab1c2d0a5d"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[LEGEND :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="32" y="10" width="110" height="10" uuid="b2bf3944-834c-43a0-a0e7-8fbd0edf382c"/>
+				<reportElement x="12" y="10" width="110" height="10" uuid="b2bf3944-834c-43a0-a0e7-8fbd0edf382c"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[*-All : Medical & Non - Medical]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="32" y="20" width="80" height="10" uuid="065ad5fd-6241-4d97-a8eb-50ccb32fd8d4"/>
+				<reportElement x="12" y="20" width="80" height="10" uuid="065ad5fd-6241-4d97-a8eb-50ccb32fd8d4"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[M : Medical]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="32" y="30" width="80" height="10" uuid="b5e2552c-fa29-495c-ac54-635d25ff3ae8"/>
+				<reportElement x="12" y="30" width="80" height="10" uuid="b5e2552c-fa29-495c-ac54-635d25ff3ae8"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
@@ -729,7 +936,41 @@ Base (%)]]></text>
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="54" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="12" width="579" height="1" uuid="8c015499-9009-4aca-8e29-7528da32fe84"/>
+			</line>
+			<staticText>
+				<reportElement x="5" y="12" width="100" height="30" uuid="6064f8b1-103f-40b9-97af-8a1f95e1e5fc"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CASRNBID0131]]></text>
+			</staticText>
+			<textField pattern="dd MMM yyyy">
+				<reportElement x="190" y="12" width="140" height="30" uuid="74c0db71-e082-496f-9333-8b8e578b23a8"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Printed Date : " + $P{FORMATTED_CURRENT_DATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="12" width="100" height="30" uuid="5aed1b6e-04f5-4574-b320-8dd35816e99d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["By : " + $P{CREATED_BY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="12" width="129" height="30" uuid="701144f4-ca96-4370-8290-0f265df805fd">
+					<printWhenExpression><![CDATA[$V{PAGE_COUNT} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>
