@@ -7,7 +7,7 @@ This Spring Boot application provides an API to generate PDF reports using Jaspe
 - Java 17 (or compatible version)
 - Spring Boot 2.x or 3.x
 - JasperReports Library (6.21.3)
-- Maven or Gradle
+- Maven
 
 ## Installation
 1. Clone the repository:
@@ -15,7 +15,7 @@ This Spring Boot application provides an API to generate PDF reports using Jaspe
    git clone https://github.com/your-repo/springboot-jasper.git
    cd springboot-jasper
    ```
-2. Ensure you have the required dependencies in `pom.xml` (for Maven users):
+2. Ensure you have the required dependencies in `pom.xml`:
    ```xml
    <dependency>
        <groupId>net.sf.jasperreports</groupId>
